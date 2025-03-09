@@ -1,0 +1,215 @@
+.speLogo {
+  height: 88px;
+}
+.runLogo {
+  height: 98px;
+}
+@keyframes Closing {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes btnAd {
+  0% {
+    opacity: 0;
+    transform: translateX(50%) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes heroUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spinIn {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+.firstLoader {
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  opacity: 1;
+  animation: Closing 0.5s ease;
+  animation-delay: 1s;
+
+  .left {
+    .logos {
+      display: flex;
+      /* border: 1px solid red; */
+      align-items: center;
+    }
+  }
+  .right {
+    color: #ffffff;
+    text-transform: capitalize;
+    font-size: 30px;
+    text-align: justify;
+    font-weight: 700;
+    font-family: inter;
+  }
+}
+.secondLoader {
+  height: inherit;
+  .top {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 25%;
+    /* border: 1px solid red; */
+    .logos {
+      display: flex;
+      gap: 5px;
+      animation: spinIn 1s ease-in-out;
+    }
+  }
+  .bottom {
+    /* border: 1px solid green; */
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .container {
+      width: 80%;
+      height: 100%;
+      /* border: 1px solid orange; */
+      display: flex;
+      .left {
+        flex: 1;
+        /* border: 1px solid green; */
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        .hero {
+          height: 70vh;
+          opacity: 0.5;
+          animation: heroUp 1.5s ease-in-out;
+        }
+      }
+      .right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 22px;
+        /* border: 1px solid red; */
+        h2 {
+          text-transform: capitalize;
+          font-weight: 600;
+          color: #ffffff80;
+          font-family: jost;
+          font-size: 70px;
+          margin: 0;
+          animation: slideIn 1s ease-in-out;
+        }
+        .btn {
+          background: #ffffff;
+          padding: 10px 25px;
+          display: flex;
+          align-items: center;
+          /* width: 300px; */
+          gap: 11px;
+          box-shadow: 0px 7.2px 53.97px 17.99px #00000080;
+          border-radius: 20px;
+          text-decoration: none;
+          color: #02264e;
+          transition: 0.3s ease;
+          div {
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+          }
+        }
+        .btn:hover {
+          transform: translateX(5px);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .speLogo {
+    height: 42px;
+  }
+  .runLogo {
+    height: 47px;
+  }
+  .firstLoader {
+    flex-direction: column;
+    gap: 20px;
+    .right {
+      font-size: 18px;
+    }
+  }
+  .secondLoader {
+    .top {
+      height: 20%;
+      align-items: center;
+    }
+    .bottom {
+      /* border: 1px solid red; */
+      height: 62%;
+      .container {
+        flex-direction: column;
+        justify-content: center;
+        .left {
+          flex: none;
+          .hero {
+            height: 37vh;
+          }
+        }
+        .right {
+          flex: none;
+          h2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            width: 100%;
+            /* border: 1px solid orange; */
+            font-size: 41px;
+          }
+          .btn {
+            /* display: none; */
+            div {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

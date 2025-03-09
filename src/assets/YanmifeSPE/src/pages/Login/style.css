@@ -1,0 +1,234 @@
+/* @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: black !important;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  font-family: Montserrat;
+}
+
+.main {
+  animation: fadeIn 1s ease-in-out;
+}
+.flexcolCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputContainerLogin {
+  margin-bottom: 15px;
+}
+.flex {
+  display: flex;
+}
+.flex-1 {
+  flex: 1;
+}
+.between {
+  justify-content: space-between;
+}
+.gap-10 {
+  gap: 10px;
+}
+.main {
+  height: 100svh;
+  color: #ffff;
+  display: flex;
+  /* overflow: hidden; */
+
+  .heroContainer,
+  .detail {
+    flex: 1;
+    height: inherit;
+  }
+  .detail {
+    background: #02264e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .detailSubContainer {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      width: 60%;
+      min-width: 280px;
+      padding: 15px 15px;
+      max-width: 500px;
+      border-radius: 35px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      -webkit-backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.15); /* Light blur background */
+      backdrop-filter: blur(8px);
+
+      h2 {
+        color: whitesmoke;
+        text-align: center;
+        font-size: 30px;
+        margin: 10px 0 0;
+      }
+      p {
+        text-align: center;
+        margin-bottom: 35px;
+        font-size: 14px;
+      }
+
+      .submit {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+        border-radius: 7px;
+        border: none;
+        margin-top: 10px;
+        background: #02264e;
+        color: #ffff;
+        font-weight: 500;
+        font-size: 17px;
+        cursor: pointer;
+        transition: 0.4s ease-in-out;
+      }
+      .submit:hover {
+        background: #003366; /* Darker shade of blue */
+        cursor: pointer;
+        transform: scale(1.02);
+      }
+    }
+    .others {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0;
+      .rememeberContainer {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        label {
+          font-size: 14px;
+        }
+        .rememberInput {
+          height: 20px;
+          cursor: pointer;
+        }
+        .rememberInput:hover {
+          cursor: pointer;
+        }
+        label {
+          margin: 0;
+        }
+      }
+      a {
+        /* color: black; */
+        font-size: 14px;
+        color: #007bff;
+        text-decoration: none;
+        transition: 0.3s ease-in-out;
+      }
+      a:hover {
+        color: #0056b3; /* Darker shade on hover */
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.border {
+  border: 1px solid red;
+}
+
+.w-full {
+  width: 100%;
+}
+.userInput {
+  display: block;
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 7px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  width: 100%;
+  /* max-width: 400px; */
+  background: transparent;
+  color: #ffff;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+.userInput:focus {
+  border: 2px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+label {
+  display: block;
+  margin-bottom: 12px;
+  color: #e0e0e0;
+  font-size: 18px;
+  font-weight: 500;
+}
+.noAccount {
+  text-align: center;
+  font-size: 14px;
+  a {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+  }
+  a:hover {
+    color: #0056b3; /* Darker shade on hover */
+    text-decoration: underline;
+  }
+}
+.heroContainer {
+  /* border: 1px solid red; */
+  /* border: 1px solid red; */
+  overflow: hidden;
+  img {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.3s ease;
+  }
+  img:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+
+    .heroContainer,
+    .detail {
+      flex: none;
+    }
+    .heroContainer {
+      height: 30%;
+      display: none;
+      img {
+        height: 100%;
+      }
+    }
+    .detail {
+      /* border: 1px solid red; */
+      height: 100%;
+      .detailSubConatiner {
+        padding: 20px;
+      }
+    }
+  }
+}
+@media only screen and (max-height: 550px) and (max-width: 520px) {
+  .main {
+    height: auto;
+  }
+}
