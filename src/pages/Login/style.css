@@ -160,6 +160,9 @@ input:-webkit-autofill:focus {
   transition: all 0.3s ease-in-out;
   position: relative;
 }
+.loading {
+  opacity: 0.5;
+}
 .userInput:focus {
   border: 2px solid #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);

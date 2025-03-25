@@ -2,13 +2,50 @@ import { registerHero } from "../../assets";
 import { Link } from "react-router-dom";
 import Heroimage from "./heroComponent";
 import "./style.css";
+import supabase from "../../lib/supabase";
+import { useState } from "react";
 
 const Register = () => {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(false);
+    setLoading(true);
+    const firstName = e.target.firstName.value;
+    const lastName = e.target.lastName.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const speID = e.target.speID.value;
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${window.location.origin}`,
+        data: {
+          full_name: firstName + " " + lastName,
+          display_name: firstName + " " + lastName,
+          speID,
+        },
+      },
+    });
+
+    if (error) {
+      setError(error.message);
+      setLoading(false);
+    } else {
+      console.log("Registration successful");
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="main">
       <div className="detail">
         <div className="detailSubContainer">
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <h2 className="capitalize">member registration</h2>
             <p>
               Join a dynamic community of professionals dedicated to advancing
@@ -23,8 +60,10 @@ const Register = () => {
                   <input
                     type="text"
                     name="firstName"
-                    className="userInput"
+                    className={`userInput ${loading ? "loading" : ""}`}
                     id="firstName"
+                    disabled={loading}
+                    required
                   />
                 </div>
                 <div className="flex-1">
@@ -34,8 +73,10 @@ const Register = () => {
                   <input
                     type="text"
                     name="lastName"
-                    className="userInput"
+                    className={`userInput ${loading ? "loading" : ""}`}
                     id="lastName"
+                    disabled={loading}
+                    required
                   />
                 </div>
               </div>
@@ -48,9 +89,11 @@ const Register = () => {
                   </label>
                   <input
                     type="email"
-                    className="userInput"
+                    required
+                    className={`userInput ${loading ? "loading" : ""}`}
                     name="email"
                     id="email"
+                    disabled={loading}
                   />
                 </div>
                 <div className="flex-1">
@@ -60,8 +103,10 @@ const Register = () => {
                   <input
                     type="text"
                     name="speID"
-                    className="userInput"
+                    required
+                    className={`userInput ${loading ? "loading" : ""}`}
                     id="speID"
+                    disabled={loading}
                   />
                 </div>
               </div>
@@ -72,18 +117,22 @@ const Register = () => {
               </label>
               <input
                 type="password"
-                className="userInput"
+                required
+                className={`userInput ${loading ? "loading" : ""}`}
                 name="password"
                 id="password"
+                disabled={loading}
               />
             </div>
             <div className="inputContainerLogin others">
               <div className="rememeberContainer">
                 <input
                   type="checkbox"
-                  className="rememberInput"
+                  required
+                  className={`rememberInput ${loading ? "loading" : ""}`}
                   name="termAgreement"
                   id="termAgreement"
+                  disabled={loading}
                 />
                 <label htmlFor="termAgreement" className="capitalize">
                   i agree to the term and condition
@@ -93,11 +142,13 @@ const Register = () => {
             <div className="inputContainerLogin">
               <input
                 type="submit"
-                className="submit capitalize"
+                className={`submit capitalize ${loading ? "loading" : ""}`}
                 name="submit"
                 value={"register"}
+                disabled={loading}
               />
             </div>
+            {error && <p>{error}</p>}
           </form>
           <div className="noAccount">
             Already have an account?{" "}
